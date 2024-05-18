@@ -182,7 +182,7 @@ const Header = () => {
                                                 <NavLink to="/Seo" className={({ isActive }) => isActive ? 'nav-link sub-menu-nav-link active' : 'nav-link sub-menu-nav-link'} onClick={closeMenu}>SEO</NavLink>
                                             </li>
                                             <li className="nav-item submenu-item">
-                                                <NavLink to="/Telemarketing" className={({ isActive }) => isActive ? 'nav-link sub-menu-nav-link active' : 'nav-link sub-menu-nav-link'} onClick={closeMenu}>Telemarketing</NavLink>
+                                                <NavLink to="/Telemarketing" className={({ isActive }) => isActive ? 'nav-link sub-menu-nav-link active' : 'nav-link sub-menu-nav-link'} onClick={closeMenu}>Tele Marketing</NavLink>
                                             </li>
                                             <li className="nav-item submenu-item">
                                                 <NavLink to="/EmailMarketing" className={({ isActive }) => isActive ? 'nav-link sub-menu-nav-link active' : 'nav-link sub-menu-nav-link'} onClick={closeMenu}>Email Marketing</NavLink>

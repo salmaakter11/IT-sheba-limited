@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Helmet } from "react-helmet";
-import DomainBD from './DomainBD';
-import DomainPackage from './DomainPackage';
+const DomainBD = React.lazy(() => import('./DomainBD'));
+const DomainPackage = React.lazy(() => import('./DomainPackage'));
+
 const Domain = () => {
     return (
         <>
             <div className="main">
-            <Helmet>
+                <Helmet>
                     <title>Domain</title>
                 </Helmet>
-               <DomainBD/>
-               <DomainPackage/>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <DomainBD />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <DomainPackage />
+                </Suspense>
+
             </div>
 
         </>

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Suspense } from 'react';
 import { Helmet } from "react-helmet";
-import WebBanner from "./WebBanner";
-import Webinfo from "./Webinfo";
-import WebsitePackage from "./WebsitePackage";
-import HowToSelect from "./HowToSelect"
-import WebSupport from "./WebSupport";
-import WebProject from "./WebProject";
+const WebBanner= React.lazy(() => import('./WebBanner'));
+const Webinfo = React.lazy(() => import('./Webinfo'));
+const WebsitePackage = React.lazy(() => import('./WebsitePackage'));
+const HowToSelect = React.lazy(() => import('./HowToSelect'));
+const WebSupport = React.lazy(() => import('./WebSupport'));
+const WebProject = React.lazy(() => import('./WebProject'));
 const WebDevelopment = () => {
     return (
         <>
@@ -14,17 +14,36 @@ const WebDevelopment = () => {
                 <Helmet>
                     <title>Web Development</title>
                 </Helmet>
-                <WebBanner />
 
-                <Webinfo />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <WebBanner />
+                </Suspense>
 
-                <WebsitePackage />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <Webinfo />
+                </Suspense>
 
-                <HowToSelect />
 
-                <WebSupport />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <WebsitePackage />
+                </Suspense>
 
-                <WebProject />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <HowToSelect />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <WebProject />
+                </Suspense>
+
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <WebSupport />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <WebProject />
+                </Suspense>
 
             </div>
         </>

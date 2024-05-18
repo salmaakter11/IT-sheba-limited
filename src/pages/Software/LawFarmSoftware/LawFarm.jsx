@@ -1,25 +1,34 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import Lawsoftinfo from "./Lawsoftinfo";
-import LawSoftDemo from "./LawSoftDemo";
-import OrderFrom from "../AccountingSoftware/OrderFrom";
+
+const Lawsoftinfo = React.lazy(() => import("./Lawsoftinfo"));
+const LawSoftDemo = React.lazy(() => import("./LawSoftDemo"));
+const OrderFrom = React.lazy(() => import("../AccountingSoftware/OrderFrom"));
+
+
 
 const LawFarm = () => {
     return (
         <>
             <div className="main">
-            <Helmet>
+                <Helmet>
                     <title>LawFarm Software</title>
                 </Helmet>
-                <Lawsoftinfo />
 
-                <LawSoftDemo />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <Lawsoftinfo />
+                </Suspense>
 
-                <OrderFrom />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <LawSoftDemo />
+                </Suspense>
 
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <OrderFrom />
+                </Suspense>
             </div>
-
         </>
-    )
+    );
 }
+
 export default LawFarm;

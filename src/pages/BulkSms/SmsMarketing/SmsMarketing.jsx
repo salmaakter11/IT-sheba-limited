@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import MarketingPackege from './MarketingPackege';
-
+const MarketingPackege = React.lazy(() => import('./MarketingPackege'));
 const SmsMarketing = () => {
     return (
         <>
@@ -106,7 +105,10 @@ const SmsMarketing = () => {
                     </div>
                 </section>
 
-              <MarketingPackege/>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <MarketingPackege />
+                </Suspense>
             </div>
 
         </>

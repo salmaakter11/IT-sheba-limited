@@ -1,20 +1,28 @@
-
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import DigitalMarketingPackege from "./DigitalMarketingPackege";
-import GoogleAds from "./GoogleAds";
-import DigitalMarketingInfo from "./DigitalMarketingInfo";
+const  DigitalMarketingPackege= React.lazy(() => import('./DigitalMarketingPackege'));
+const  GoogleAds= React.lazy(() => import('./GoogleAds'));
+const DigitalMarketingInfo = React.lazy(() => import('./DigitalMarketingInfo'));
 const DigitalMarketing = () => {
     return (
         <>
             <div className="main">
                 <Helmet>
-                    <title>DigitalMarketing</title>
+                    <title>Digital Marketing</title>
                 </Helmet>
-                <DigitalMarketingInfo />
-                <GoogleAds />
-                <DigitalMarketingPackege />
-            </div>
 
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <DigitalMarketingInfo />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <GoogleAds />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <DigitalMarketingPackege />
+                </Suspense>
+            </div>
 
         </>
     )

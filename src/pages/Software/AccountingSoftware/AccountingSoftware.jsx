@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Suspense } from 'react';
 import { Helmet } from "react-helmet";
-import AccountingBanner from "./AccountingBanner";
-import AccountingInfo from "./AccountingInfo";
-import AccountingSupport from "./AccountingSupport";
-import BestAccounting from "./BestAccounting";
-import AccountingSoftwarePackage from "./AccountingSoftwarePackage";
-import OrderFrom from "./OrderFrom";
+const AccountingBanner = React.lazy(() => import('./AccountingBanner'));
+const AccountingInfo = React.lazy(() => import('./AccountingInfo'));
+const AccountingSupport = React.lazy(() => import('./AccountingSupport'));
+const BestAccounting = React.lazy(() => import('./BestAccounting'));
+const AccountingSoftwarePackage = React.lazy(() => import('./AccountingSoftwarePackage'));
+const OrderFrom = React.lazy(() => import('./OrderFrom'));
+
 const AccountingSoftware = () => {
     return (
         <>
@@ -13,17 +14,31 @@ const AccountingSoftware = () => {
                 <Helmet>
                     <title>Accounting Software</title>
                 </Helmet>
-                <AccountingBanner />
 
-                <AccountingInfo />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <AccountingBanner />
+                </Suspense>
 
-                <AccountingSupport />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <AccountingInfo />
+                </Suspense>
 
-                <BestAccounting />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <AccountingSupport />
+                </Suspense>
 
-                <AccountingSoftwarePackage />
 
-                <OrderFrom />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <BestAccounting />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <AccountingSoftwarePackage />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <OrderFrom />
+                </Suspense>
 
             </div>
 

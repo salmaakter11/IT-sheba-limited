@@ -16,16 +16,6 @@ const EcommerceProject = () => {
         <section>
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-12">
-                        <div className="guide_heading_area">
-                            <h3>Our E-commerce Client List</h3>
-                            <p>
-                                Over the past 4 years, we have already created over 300+
-                                e-commerce websites. The list of some of our clients is below.
-                            </p>
-                          
-                        </div>
-                    </div>
                     {projects.map((project, index) => (
                         <div key={index} className="col-lg-4 col-md-6 col-sm-12 col-12">
                             <a href={project.link}>

@@ -1,12 +1,12 @@
-import EcommerceBanner from "./EcommerceBanner";
-import { Helmet } from "react-helmet";
-import EcommerceFeatures from "./EcommerceFeatures";
-import EcommerceProject from "./EcommerceProject";
-import EcommerceSupport from "./EcommerceSupport";
-import EcommerceWebsiteDesign from "./EcommerceWebsiteDesign";
-import EcommerceWebsitePackege from "./EcommerceWebsitePackege";
-import Ecommerceinfo from "./Ecommerceinfo";
-
+import React, { Suspense } from 'react';
+import { Helmet } from "react-helmet"
+const EcommerceBanner = React.lazy(() => import('./EcommerceBanner'));
+const Ecommerceinfo = React.lazy(() => import('./Ecommerceinfo'));
+const EcommerceFeatures = React.lazy(() => import('./EcommerceFeatures'));
+const EcommerceWebsiteDesign = React.lazy(() => import('./EcommerceWebsiteDesign'));
+const EcommerceSupport = React.lazy(() => import('./EcommerceSupport'));
+const EcommerceWebsitePackege = React.lazy(() => import('./EcommerceWebsitePackege'));
+const EcommerceProject = React.lazy(() => import('./EcommerceProject'));
 const EcommerceWebsite = () => {
     return (
         <>
@@ -15,13 +15,32 @@ const EcommerceWebsite = () => {
                     <title>Ecommerce Website</title>
                 </Helmet>
 
-                <EcommerceBanner />
-                <Ecommerceinfo />
-                <EcommerceFeatures />
-                <EcommerceWebsiteDesign />
-                <EcommerceSupport />
-                <EcommerceWebsitePackege />
-                <EcommerceProject />
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <EcommerceBanner />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <Ecommerceinfo />
+                </Suspense>
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <EcommerceFeatures />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <EcommerceWebsiteDesign />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <EcommerceSupport />
+                </Suspense>
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <EcommerceWebsitePackege />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <EcommerceProject />
+                </Suspense>
             </div>
 
         </>

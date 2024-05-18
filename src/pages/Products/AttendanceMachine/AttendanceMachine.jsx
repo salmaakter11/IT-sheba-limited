@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Helmet } from "react-helmet";
-import MachinePackege from './MachinePackege';
-import AttendanceMachineInfo from './AttendanceMachineInfo';
+
+const AttendanceMachineInfo = React.lazy(() => import('./AttendanceMachineInfo'));
+const MachinePackege = React.lazy(() => import('./MachinePackege'));
+
 
 const AttendanceMachine = () => {
   return (
     <>
-
       <div className="main">
-      <Helmet>
+        <Helmet>
           <title>Attendance Machine</title>
         </Helmet>
-        <AttendanceMachineInfo />
-        <MachinePackege />
 
+        <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+          <AttendanceMachineInfo />
+        </Suspense>
+
+        <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+          <MachinePackege />
+        </Suspense>
       </div>
-
     </>
   );
 };

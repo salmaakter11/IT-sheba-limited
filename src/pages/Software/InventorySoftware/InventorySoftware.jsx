@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import SoftwareDemo from "./SoftwareDemo";
-import InventoryInfo from "./InventoryInfo";
+const InventoryInfo = React.lazy(() => import("./InventoryInfo"));
+const SoftwareSignificance = React.lazy(() => import("./SoftwareSignificance"));
+const SalesParty = React.lazy(() => import("./SalesParty"));
+const SoftwareDemo = React.lazy(() => import("./SoftwareDemo"));
+const OrderFrom = React.lazy(() => import("../AccountingSoftware/OrderFrom"));
 
-import SalesParty from "./SalesParty";
-import SoftwareSignificance from "./SoftwareSignificance";
-import OrderFrom from "../AccountingSoftware/OrderFrom";
+
 const InventorySoftware = () => {
     return (
         <>
@@ -13,18 +14,29 @@ const InventorySoftware = () => {
                 <Helmet>
                     <title>Inventory Software</title>
                 </Helmet>
-                <InventoryInfo />
-                <SoftwareSignificance />
 
-                <SalesParty />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <InventoryInfo />
+                </Suspense>
 
-                <SoftwareDemo />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <SoftwareSignificance />
+                </Suspense>
 
-                <OrderFrom />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <SalesParty />
+                </Suspense>
 
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <SoftwareDemo />
+                </Suspense>
+                
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <OrderFrom />
+                </Suspense>
             </div>
-
         </>
-    )
+    );
 }
+
 export default InventorySoftware;

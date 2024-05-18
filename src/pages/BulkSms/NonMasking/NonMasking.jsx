@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
 import Client from '../../homeComponent/Client';
-import NonMaskingPackege from './NonMaskingPackege';
-
+const NonMaskingPackege = React.lazy(() => import('./NonMaskingPackege'));
 const NonMasking = () => {
     return (
         <>
@@ -161,9 +160,16 @@ const NonMasking = () => {
                     </div>
                 </section>
                 {/*out partner section start*/}
-                <Client />
-               
-                <NonMaskingPackege/>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <Client />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <NonMaskingPackege />
+                </Suspense>
+
+
             </div>
 
         </>

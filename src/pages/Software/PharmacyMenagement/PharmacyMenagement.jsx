@@ -1,7 +1,7 @@
-
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import PharmacyInfo from "./PharmacyInfo"
-import OrderFrom from "../AccountingSoftware/OrderFrom";
+const PharmacyInfo = React.lazy(() => import('./PharmacyInfo'));
+const OrderFrom = React.lazy(() => import('../AccountingSoftware/OrderFrom'));
 const PharmacyMenagement = () => {
     return (
         <>
@@ -9,7 +9,11 @@ const PharmacyMenagement = () => {
                 <Helmet>
                     <title>Pharmacy Menagement</title>
                 </Helmet>
-                 <PharmacyInfo/>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <PharmacyInfo />
+                </Suspense>
+
                 {/* pharmacy Management start*/}
                 <section className="feature-tab-section ptb-40">
                     <div className="container">
@@ -69,6 +73,7 @@ const PharmacyMenagement = () => {
                     </div>
                 </section>
                 {/*pricing with switch section start*/}
+
                 <section className="feature-tab-section ptb-40">
                     <div className="container">
                         <div className="row  text-center">
@@ -171,7 +176,10 @@ const PharmacyMenagement = () => {
                 </section>
                 {/*  Software Demo */}
 
-                <OrderFrom />
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <OrderFrom />
+                </Suspense>
             </div>
 
         </>

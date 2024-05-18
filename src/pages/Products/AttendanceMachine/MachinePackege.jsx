@@ -4,11 +4,11 @@ const MachinePackege = () => {
     const machinePackages = [
         {
             name: 'ZKTeco F18',
-            price: 'Call for price 8801906-297862',
+            price: 'Call: 8801906-297862 for price',
             image: 'assets/img/it-sheba-img/ZKTeco-F18-4-500x500.jpg',
             features: ['Install: 2000 Taka', 'Card & Finger'],
         },
-        // Add more machine packages as needed
+ 
     ];
 
     return (

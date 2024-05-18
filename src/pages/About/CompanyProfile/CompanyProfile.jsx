@@ -1,22 +1,33 @@
-import React from 'react';
-import {Helmet} from "react-helmet";
-import CompanyProfileAbout from './CompanyProfileAbout';
-import CompanyProfileMembership from './CompanyProfileMembership'
-import CompanyProfileServices from './CompanyProfileServices';
+import React, { Suspense } from 'react';
+import { Helmet } from "react-helmet";
+
+const CompanyProfileAbout = React.lazy(() => import('./CompanyProfileAbout'));
+
+const  CompanyProfileMembership = React.lazy(() => import('./CompanyProfileMembership'));
+
+const CompanyProfileServices = React.lazy(() => import('./CompanyProfileServices'));
 
 const MessegeFounder = () => {
     return (
         <>
             <div className="main">
-            <Helmet>
-                <title>Company Profile</title>
-            </Helmet>
-            
-               <CompanyProfileAbout/>
+                <Helmet>
+                    <title>Company Profile</title>
+                </Helmet>
 
-               <CompanyProfileMembership/>
+                
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                <CompanyProfileAbout />
+                </Suspense>
 
-                <CompanyProfileServices/>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <CompanyProfileMembership />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <CompanyProfileServices />
+                </Suspense>
             </div>
         </>
 

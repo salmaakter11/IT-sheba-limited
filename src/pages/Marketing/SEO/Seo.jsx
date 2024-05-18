@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import OrderFrom from "../../Software/AccountingSoftware/OrderFrom";
-import SeoPackege from "./SeoPackege";
-import SeoInfo from "./SeoInfo";
-import WhatServices from "./WhatServices";
+
+const SeoInfo = React.lazy(() => import("./SeoInfo"));
+const SeoPackege = React.lazy(() => import("./SeoPackege"));
+const WhatServices = React.lazy(() => import("./WhatServices"));
+const OrderFrom = React.lazy(() => import("../../Software/AccountingSoftware/OrderFrom"));
+
+
 const Seo = () => {
     return (
         <>
@@ -11,16 +14,25 @@ const Seo = () => {
                 <Helmet>
                     <title>SEO</title>
                 </Helmet>
-                <SeoInfo />
 
-                <SeoPackege />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <SeoInfo />
+                </Suspense>
 
-                <WhatServices />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <SeoPackege />
+                </Suspense>
 
-                <OrderFrom />
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <WhatServices />
+                </Suspense>
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <OrderFrom />
+                </Suspense>
             </div>
-
         </>
-    )
+    );
 }
+
 export default Seo;

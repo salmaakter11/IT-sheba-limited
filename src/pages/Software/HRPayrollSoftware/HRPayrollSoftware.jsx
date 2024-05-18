@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Suspense } from 'react';
 import { Helmet } from "react-helmet";
-import HRSoftwareBanner from "./HRSoftwareBanner";
-import WhatIsAccounting from "./WhatIsAccounting";
-import HRSoftwarePackage from "./HRSoftwarePackage";
-import OrderFrom from "../AccountingSoftware/OrderFrom";
+const HRSoftwareBanner= React.lazy(() => import('./HRSoftwareBanner'));
 
+const WhatIsAccounting= React.lazy(() => import('./WhatIsAccounting'));
+
+const HRSoftwarePackage= React.lazy(() => import('./HRSoftwarePackage'));
+
+const OrderFrom = React.lazy(() => import('../AccountingSoftware/OrderFrom'));
 const HRPayrollSoftware = () => {
     return (
         <>
@@ -13,13 +15,26 @@ const HRPayrollSoftware = () => {
                     <title>HR & Payroll Software</title>
                 </Helmet>
                 
+                
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
                 <HRSoftwareBanner />
+                </Suspense>
 
+                
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
                 <WhatIsAccounting />
+                </Suspense>
 
+                
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
                 <HRSoftwarePackage />
+                </Suspense>
 
+               
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
                 <OrderFrom />
+                </Suspense>
 
             </div>
 

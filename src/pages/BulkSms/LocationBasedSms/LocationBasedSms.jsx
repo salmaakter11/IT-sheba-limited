@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import LocationBasedPackege from './LocationBasedPackege';
+const LocationBasedPackege = React.lazy(() => import('./LocationBasedPackege'));
 const LocationBasedSms = () => {
     return (
         <>
@@ -105,7 +105,12 @@ const LocationBasedSms = () => {
                         </div>
                     </div>
                 </section>
-                <LocationBasedPackege />
+
+
+
+                <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+                    <LocationBasedPackege />
+                </Suspense>
 
             </div>
 

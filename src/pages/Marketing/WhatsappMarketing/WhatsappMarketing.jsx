@@ -1,19 +1,30 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import WhatsappMarketingPackege from "./WhatsappMarketingPackege";
-import WhatsappMarketinginfo from "./WhatsappMarketinginfo";
+
+const WhatsappMarketinginfo = React.lazy(() => import("./WhatsappMarketinginfo"));
+const WhatsappMarketingPackege = React.lazy(() => import("./WhatsappMarketingPackege"));
+
+
 const WhatsappMarketing = () => {
   return (
     <>
       <div className="main">
-      <Helmet>
+        <Helmet>
           <title>Whatsapp Marketing</title>
         </Helmet>
-       <WhatsappMarketinginfo/>
-        <WhatsappMarketingPackege />
-      </div>
 
+        <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+          <WhatsappMarketinginfo />
+        </Suspense>
+
+
+        <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+          <WhatsappMarketingPackege />
+        </Suspense>
+        
+      </div>
     </>
-  )
+  );
 }
+
 export default WhatsappMarketing;

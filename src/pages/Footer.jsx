@@ -16,9 +16,9 @@ const Footer = () =>{
                                                 that provide total
                                                 information technology solutions.</p></a>
                                             <h4 className="text-white">Membership </h4>
-                                            <a className="navbar-brand" href="https://basis.org.bd/company-profile/23-01-015"><img src="assets/img/partners/basis.png" width="80" alt="logo"
+                                            <a className="navbar-brand" href="https://basis.org.bd/company-profile/23-01-015" target="_blank" ><img src="assets/img/partners/basis.png" width="80"  alt="logo"
                                                 className="img-fluid" /></a>
-                                            <a className="navbar-brand" href="https://e-cab.net/company-profile/2146/it-sheba-24"><img src="assets/img/partners/ecab.png" width="80" alt="logo"
+                                            <a className="navbar-brand" href="https://e-cab.net/company-profile/2146/it-sheba-24" target="_blank" ><img src="assets/img/partners/ecab.png" width="80" alt="logo"
                                                 className="img-fluid" /></a>
                                             <ul className="list-inline  social">
                                                 <li className="list-inline-item "><a href="https://www.facebook.com/ITShebaLimited/"

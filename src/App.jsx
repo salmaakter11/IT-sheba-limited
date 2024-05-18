@@ -47,6 +47,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          {/* About US */}
           <Route path="Messegefounder" element={<MessegeFounder />} />
           <Route path="CompanyProfile" element={<CompanyProfile />} />
           <Route path="TeamMember" element={<TeamMember />} />
@@ -54,35 +55,42 @@ function App() {
           <Route path="JoinTheTeam" element={<JoinTheTeam />} />
           <Route path="OurClients" element={<OurClients />} />
           <Route path="OurSkills" element={<OurSkills />} />
+          {/* web */}
           <Route path="Domain" element={<Domain />} />
           <Route path="Hosting" element={<Hosting />} />
           <Route path="WebDevelopment" element={<WebDevelopment />} />
-          <Route path="EcommerceWebsite" element={<EcommerceWebsite />} />
+          <Route path="EcommerceWebsite" element={<EcommerceWebsite />} /> 
+          
+           {/* software */}
           <Route path="AccountingSoftware" element={<AccountingSoftware />} />
           <Route path="TravelAgencySoftware" element={<TravelAgencySoftware />} />
           <Route path="HRPayrollSoftware" element={<HRPayrollSoftware />} />
           <Route path="InventorySoftware" element={<InventorySoftware />} />
           <Route path="LawFarm" element={<LawFarm />} />
-          <Route path="PharmacyMenagement" element={<PharmacyMenagement />} />
+          <Route path="PharmacyMenagement" element={<PharmacyMenagement />} /> 
           <Route path="HospitalERP" element={<HospitalERP />} />
           <Route path="PosSoftware" element={<PosSoftware />} />
           <Route path="PrescriptionManagement" element={<PrescriptionManagement />} />
           <Route path="RestaurantManagement" element={<RestaurantManagement />} />
           <Route path="SchoolManagement" element={<SchoolManagement />} />
+          {/* BULK SMS */}
           <Route path="MaskingSms" element={<MaskingSms />} />
           <Route path="NonMasking" element={<NonMasking />} />
           <Route path="SmsMarketing" element={<SmsMarketing />} />
           <Route path="LocationBasedSms" element={<LocationBasedSms />} />
           <Route path="ElectionSms" element={<ElectionSms />} />
+          {/* MARKETING */}
           <Route path="Seo" element={<Seo />} />
           <Route path="Telemarketing" element={<Telemarketing />} />
           <Route path="EmailMarketing" element={<EmailMarketing />} />
           <Route path="WhatsappMarketing" element={<WhatsappMarketing />} />
           <Route path="DigitalMarketing" element={<DigitalMarketing />} />
+          {/* PRODUCTS */}
           <Route path="Cctv" element={<Cctv />} />
           <Route path="WiftCamera" element={<WiftCamera />} />
           <Route path="AttendanceMachine" element={<AttendanceMachine />} />
           <Route path="Pabx" element={<Pabx />} />
+          {/* Contact */}
           <Route path="contact" element={<Contact />} />
 
         </Routes>

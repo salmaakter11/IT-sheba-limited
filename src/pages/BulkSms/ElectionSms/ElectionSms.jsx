@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Suspense } from "react";
 import { Helmet } from "react-helmet";
-import ElectionSmsPackege from './ElectionSmsPackege';
+const ElectionSmsPackege = React.lazy(() => import('./ElectionSmsPackege'));
 const ElectionSms = () => {
   return (
     <>
@@ -90,11 +90,13 @@ const ElectionSms = () => {
           </div>
         </section>
 
-    
-       <ElectionSmsPackege/>
+
+
+        <Suspense fallback={<h1 className='text-center'>Loading...</h1>}>
+           <ElectionSmsPackege />
+        </Suspense>
+
       </div>
-
-
     </>
   );
 };
